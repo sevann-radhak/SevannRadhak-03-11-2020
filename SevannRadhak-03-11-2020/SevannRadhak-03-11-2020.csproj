@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>SevannRadhak_03_11_2020</RootNamespace>
+  </PropertyGroup>
+
+</Project>
