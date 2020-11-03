@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "MB3nT4AFbvLTEo2a5jS87bvMzRzxlLFQ8jHutQg06G5fBKpmanU5tg4rz2n664MNdMAxUBb8K6258wAQCKfOaQ==",
+  "dgSpecHash": "OL4/VwTHyB46FA6GO738+0d60zk2Vcc+nvLAh4iOVYD1u9wwBFQnF4e4F+t5Nd2qYLeyoYudhMI7nevNnt9F1g==",
   "success": true,
   "projectFilePath": "C:\\Projects\\Sevann\\SevannRadhak-03-11-2020\\SevannRadhak-03-11-2020\\SevannRadhak-03-11-2020.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\sevan\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

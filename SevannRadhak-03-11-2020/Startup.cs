@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SevannRadhak_03_11_2020.Interfaces;
+using SevannRadhak_03_11_2020.Services;
 
 namespace SevannRadhak_03_11_2020
 {
@@ -24,6 +26,10 @@ namespace SevannRadhak_03_11_2020
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddScoped<IAlbumsService, AlbumsService>();
+            services.AddScoped<ICommentsService, CommentsService>();
+            services.AddScoped<IPhotosService, PhotosService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

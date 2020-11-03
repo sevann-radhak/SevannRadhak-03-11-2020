@@ -5,4 +5,8 @@
     <RootNamespace>SevannRadhak_03_11_2020</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
 </Project>
