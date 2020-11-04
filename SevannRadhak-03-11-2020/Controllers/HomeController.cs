@@ -32,21 +32,73 @@ namespace SevannRadhak_03_11_2020.Controllers
         public async Task<IActionResult> Index()
         {
             ICollection<AlbumEntity> albums = await _albumsService.GetAllAsync();
+            ICollection<PhotoEntity> photos = new List<PhotoEntity>();
+            ICollection<CommentsEntity> comments = new List<CommentsEntity>();
 
-            ICollection<PhotoEntity> photos = await GetPhotosByAlbumAsync(albums.FirstOrDefault().Id);
-            ICollection<CommentsEntity> comments = await GetCommentsByPhotoAsync(photos.FirstOrDefault().Id);
-            
-            return View();
+            return View(new GenericModelView { Albums = albums, Comments = comments, Photos = photos });
         }
 
-        public async Task<ICollection<CommentsEntity>> GetCommentsByPhotoAsync(int id)
+        //[HttpGet("GetCommentsByPhotoPruebaAsync/{id}")]
+        //public async Task<IActionResult> GetCommentsByPhotoPruebaAsync(int id)
+        //{
+        //    try
+        //    {
+        //        return View(nameof(Index), await _commentsService.GetManyAsync(id));
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw new Exception(e.Message);
+        //    }
+        //}
+
+
+
+        //[HttpGet("GetCommentsByPhotoAsync/{id}")]
+        //public async Task<ICollection<CommentsEntity>> GetCommentsByPhotoAsync(int id)
+        //{
+        //    return await _commentsService.GetManyAsync(id);
+        //}
+
+        //[HttpPost]
+        //[Route("PhotosByAlbumAsync")]
+        //public async Task<ICollection<PhotoEntity>> PhotosByAlbumAsync()
+        //{
+        //    try
+        //    {
+        //        return await _photosService.GetManyAsync(1);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw new Exception(e.Message);
+        //    }
+        //}
+
+        [HttpGet]
+        [Route("CommentsByPhotoId")]
+        public async Task<ICollection<CommentsEntity>> CommentsByPhotoId(int id)
         {
-            return await _commentsService.GetManyAsync(id);
+            try
+            {
+                return await _commentsService.GetManyAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public async Task<ICollection<PhotoEntity>> GetPhotosByAlbumAsync(int id)
+        [HttpGet]
+        [Route("PhotosByAlbumId")]
+        public async Task<ICollection<PhotoEntity>> PhotosByAlbumId(int id)
         {
-            return await _photosService.GetManyAsync(id);
+            try
+            {
+                return await _photosService.GetManyAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public IActionResult Privacy()

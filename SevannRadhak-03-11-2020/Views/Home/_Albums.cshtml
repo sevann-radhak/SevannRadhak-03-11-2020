@@ -1,0 +1,13 @@
+﻿@model SevannRadhak_03_11_2020.Models.GenericModelView
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Albums
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        @foreach (var item in Model.Albums)
+        {
+            <button type="button" id="details" class="dropdown-item" value="@item.Id" onclick="GetPhotosByAlbum(value);">@Html.DisplayFor(modelItem => item.Title)</button>
+        }
+    </div>
+</div>

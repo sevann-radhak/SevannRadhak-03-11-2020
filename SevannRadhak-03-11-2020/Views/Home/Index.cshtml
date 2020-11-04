@@ -1,8 +1,74 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model SevannRadhak_03_11_2020.Models.GenericModelView
+
+@{
+    ViewData["Title"] = "Bertoni Test";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+
+<div class="container">
+    <div class="col-md-3"><partial name="_Albums" /></div>
+    <div class="col-md-9"><partial name="_Photos" /></div>   
 </div>
+
+@section Scripts {
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+        function GetCommentsByPhoto(id) {
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("CommentsByPhotoId")',
+                data: { id: id },
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var comments = "Comments: ";
+
+                    if (data.length > 1) {
+                        for (var i = 0; i < data.length; i++) {
+                            comments = `${comments} |  ${data[i]["name"]}`;
+                        }
+                    }
+                    else {
+                        comments = "No comments.";
+                    }
+
+                    alert(comments);
+                },
+                error: function () {
+                    alert("Error while inserting data");
+                }
+            });
+        }
+
+        function GetPhotosByAlbum(id) {
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("PhotosByAlbumId")',
+                data: { id: id },
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $("#PhotosTable tbody").empty();
+
+                    $.each(data, function (i, item) {
+                        var rows = "<tr>" +
+                            "<td id='id'>" + item.id + "</td>" +
+                            "<td id='title'>" + item.title + "</td>" +
+                            "<td id='url'>" + item.url + "</td>" +
+                            "<td id='thumbnailUrl'> <img src='" + item.thumbnailUrl+"' alt='' class='img-thumbnail'></td>" +
+                            "<td style='white-space: nowrap;'>" +
+                            "<button data-id='" + item.id +"' class='btn btn-primary btn-sm' onclick='GetCommentsByPhoto(value);' value='"+ item.id +"' data-toggle='modal' data-target='#modalDialog'><i class='glyphicon glyphicon-list'></i></button>" +
+                            "</td>" +
+                            "</tr>";
+                        $('#PhotosTable').append(rows);
+                    });
+                },
+                error: function () {
+                    alert("Error while inserting data");
+                }
+            });
+        }
+    </script>
+}

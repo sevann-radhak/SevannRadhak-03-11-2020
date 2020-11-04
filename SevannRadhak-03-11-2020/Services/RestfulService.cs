@@ -59,7 +59,6 @@ namespace SevannRadhak_03_11_2020.Services
         public async Task<ICollection<T>> GetManyAsync(int id)
         {
             using HttpClient httpClient = new HttpClient();
-            var a = $"{ParametrizedEndpoint()}{id}";
             using HttpResponseMessage response = await httpClient.GetAsync($"{ParametrizedEndpoint()}{id}");
             try
             {

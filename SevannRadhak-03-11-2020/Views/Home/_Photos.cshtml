@@ -1,0 +1,38 @@
+﻿@model SevannRadhak_03_11_2020.Models.GenericModelView
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="font-weight: bold">Photos</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-responsive table-striped" id="PhotosTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Photos.FirstOrDefault().Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Photos.FirstOrDefault().Title)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Photos.FirstOrDefault().Url)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Photos.FirstOrDefault().ThumbnailUrl)
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                           
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_ModalDialog" />
